@@ -22,8 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'oeptu#%j#6*udse(7#_u!-efoepo-u)wyf1#5*i3gco3lr-wcr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+# 允许的服务器
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.dyyphoto.com']
 
 # Application definition
@@ -158,5 +159,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
 STATIC_URL = '/static/'
+# 静态文件收集目录
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
