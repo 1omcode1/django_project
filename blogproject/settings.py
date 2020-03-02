@@ -24,7 +24,7 @@ SECRET_KEY = 'oeptu#%j#6*udse(7#_u!-efoepo-u)wyf1#5*i3gco3lr-wcr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.zmrenwu.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.dyyphoto.com']
 
 # Application definition
 
