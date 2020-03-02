@@ -12,4 +12,4 @@ faker = "*"
 django-pure-pagination = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6.4"
