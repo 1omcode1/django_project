@@ -1,0 +1,39 @@
+
+
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block main %}
+          <div class="lowin-box lowin-register">
+				<div class="lowin-box-inner">
+					<form method="post" action=".">
+                        {% csrf_token %}
+
+						<p>Let's create your account</p>
+						<div class="lowin-group">
+							<label>昵称</label>
+							<input type="text" name="username" autocomplete="username" class="lowin-input" required>
+						</div>
+						<div class="lowin-group">
+							<label>邮箱</label>
+							<input type="email" autocomplete="email" name="email" class="lowin-input">
+						</div>
+						<div class="lowin-group">
+							<label>设置密码</label>
+							<input type="password" name="password" autocomplete="current-password" class="lowin-input" required>
+							<label>确认密码</label>
+							<input type="password" name="password2" autocomplete="current-password" class="lowin-input" required>
+						</div>
+						<button class="lowin-btn">
+							注册
+						</button>
+
+						<div class="text-foot">
+							Already have an account? <a href="{% url 'userprofile:user_login' %}" class="login-link">登录</a>
+						</div>
+					</form>
+				</div>
+          </div>
+
+{% endblock main %}

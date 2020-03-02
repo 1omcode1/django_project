@@ -1,0 +1,23 @@
+
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item" style="box-shadow: 1px 1px 1px #888888;">
+          <a href="/category_name" class="my-fa fa fa-book"> 分类</a>
+        </li>
+      {% for category in category_list %}
+        <li class="list-group-item" style="box-shadow: 1px 1px 1px #888888;">
+          <a href="{% url 'blog:category' category.pk %}" style="color:#527BFF;">
+            {{ category.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </a>
+          <span class="badge" style="background-color:blue;">
+              {{ category.num_posts }}
+          </span>
+
+        </li>
+      {% empty %}
+        暂无分类！
+      {% endfor %}
+    </ul>
+

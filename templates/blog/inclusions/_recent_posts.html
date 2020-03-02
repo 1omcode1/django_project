@@ -1,0 +1,25 @@
+
+
+
+   <div class="panel panel-default" style="box-shadow: 1px 1px 1px #888888;">
+    <div class="panel-heading">
+        <h3 class="panel-title fas fa-bars">&nbsp;最新文章</h3>
+    </div>
+    <table class="table">
+        {% for post in recent_post_list %}
+        <div>
+            <p></p>
+        </div>
+        <tr >
+            <a  href="{{ post.get_absolute_url }}" style="padding-left:15px;" class="fas fa-anchor  ">
+                <b style="color:#527BFF;" >&nbsp;&nbsp;{{ post.title }}<b>
+            </a>
+        </tr>
+        <div>
+            <p></p>
+        </div>
+        {% empty %}
+        暂无标签！
+      {% endfor %}
+    </table>
+   </div>

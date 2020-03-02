@@ -1,0 +1,18 @@
+
+
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="widget widget-category">
+  <ul>
+    {% for category in category_list %}
+      <li>
+        <a href="{% url 'blog:category' category.pk %}">{{ category.name }}</a>
+      </li>
+    {% empty %}
+      暂无分类！
+    {% endfor %}
+  </ul>
+</div>
+{% endblock main %}

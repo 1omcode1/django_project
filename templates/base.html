@@ -1,0 +1,298 @@
+
+{% load static %}
+{% load blog_extras %}
+
+<!DOCTYPE html>
+<!--网站主语言-->
+<html lang="zh-cn">
+
+	<head>
+		<link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
+		<!-- 代码高亮  -->
+		<style>
+			.codehilite {
+			  padding: 0;
+			}
+
+			/* for block of numbers */
+			.hljs-ln-numbers {
+			  -webkit-touch-callout: none;
+			  -webkit-user-select: none;
+			  -khtml-user-select: none;
+			  -moz-user-select: none;
+			  -ms-user-select: none;
+			  user-select: none;
+
+			  text-align: center;
+			  color: #ccc;
+			  border-right: 1px solid #CCC;
+			  vertical-align: top;
+			  padding-right: 5px;
+			}
+
+			.hljs-ln-n {
+			  width: 30px;
+			}
+
+			/* for block of code */
+			.hljs-ln .hljs-ln-code {
+			  padding-left: 10px;
+			  white-space: pre;
+			}
+
+			.border_adjust{
+				border:solid 1px #D3D3D3;
+				border-radius:10px;
+				box-shadow: 1px 1px 1px #888888;
+				background:white; padding-left:25px;
+			}
+			.border_adjust:hover{
+				border:solid 1px #D3D3D3;
+				border-radius:10px;
+				box-shadow:3px 3px 3px #888888,3px -3px 3px #888888,-3px 3px 3px  #888888;-3px -3px 3px #888888;
+				background:white; padding-left:25px;
+			}
+
+
+
+		  </style>
+
+
+		<!--  返回顶部浮动按钮的css  -->
+		<style>
+    /* 按钮边框的大小、位置、样式 */
+    .toTop-arrow {
+        width: 5rem;
+        height: 5rem;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-radius: 33%;
+        opacity: 0.7;
+        background: black;
+        cursor: pointer;
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: none;
+    }
+
+    /* 绘制按钮中的向上箭头 */
+    .toTop-arrow::before, .toTop-arrow::after {
+        width: 30px;
+        height: 7px;
+        border-radius: 3px;
+        background: orange;
+        position: absolute;
+        content: "";
+    }
+
+    .toTop-arrow::before {
+        transform: rotate(-45deg) translate(0, -50%);
+        left: 0.4rem;
+    }
+
+    .toTop-arrow::after {
+        transform: rotate(45deg) translate(0, -50%);
+        right: 0.4rem;
+    }
+
+    /* 取消点击按钮时的聚焦 */
+    .toTop-arrow:focus {
+        outline: none;
+    }
+</style>
+
+
+
+		<!--导入网站标题的位置-->
+		<title>
+			{% block title %}
+			{% endblock %}
+		</title>
+
+		<!-- meta -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- css -->
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
+		<link rel="stylesheet"
+			  href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+			  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+			  crossorigin="anonymous"
+		>
+
+		<!-- js -->
+		<script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
+		<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+
+		<script src="{% static 'blog/js/pace.min.js' %}"></script>
+		<script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
+
+	</head>
+
+	<body style="background:#B0E0E6">
+
+	<!--响应式导航栏-->
+	<nav class="navbar" style="background-color:white;">
+		<div class ='container'>
+
+			<div>
+					<button type="button" style="padding:17px;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-navbar-collapse">
+
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+
+					</button>
+					<a href="{% url 'blog:index' %}" class="navbar-brand">
+						我的博客
+					</a>
+			</div>
+
+					<div class="collapse navbar-collapse"  id="example-navbar-collapse">
+						<ul class="nav navbar-nav ">
+							<li class="active">
+								<a  href="{% url 'blog:index' %}" >首页</a>
+							</li>
+
+
+
+						</ul>
+
+
+							<!-- Django的 if 模板语句 -->
+						{% if user.is_authenticated %}
+							<!-- 如果用户已经登录，则显示用户名下拉框 -->
+							<div class="dropdown navbar-right">
+								<button class="btn btn-danger dropdown-toggle" style="padding:15px;box-sizing:border-box;"
+										type="button" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false">
+									{{ user.username }}
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="{% url 'userprofile:logout' %}">退出登录</a></li>
+								</ul>
+
+						<!-- 如果用户未登录，则显示 “登录” -->
+						{% else %}
+								<a class="btn btn-danger navbar-right" style="padding:15px;box-sizing:border-box;" href="{% url 'userprofile:user_login' %}" role="button">登录</a>
+
+						<!-- if 语句在这里结束 -->
+						{% endif %}
+							</div>
+					</div>
+
+		<!--搜索框
+						<form class="navbar-form navbar-left">
+							<div class="form-group input-group">
+								<input type="text" class="form-control" id="key-movie" placeholder="请输入文章标题">
+								<span class="input-group-btn"><a class="btn btn-default">
+									<span class="ion-ios-search-strong"></span>搜索</a></span>
+							</div>
+						</form>
+						-->
+
+
+
+
+
+	</nav>
+
+	<!--评论发送成功或失败的显示信息-->
+	{% if messages %}
+				{% for message in messages %}
+				  <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					{{ message }}
+				  </div>
+				{% endfor %}
+	{% endif %}
+
+
+	<!--定义正文-->
+	<div class="content-body">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8">
+					{% block main %}
+					{% endblock main %}
+				</main>
+
+				<div class="col-md-1"></div>
+
+				<aside class="col-md-3">
+
+					{% block toc %}
+					{% endblock toc %}
+
+					<!--  侧边栏显示最新文章、分类、标签、等-->
+					<div>
+						<p></p>
+					</div>
+					{% show_recent_posts %}
+					{% show_archives %}
+					{% show_categories %}
+					{% show_tags %}
+
+
+				</aside>
+
+
+			</div>
+		</div>
+	</div>
+	<footer id="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p class="copyright">&copy 2020- 采集自<a href="http://www.cssmoban.com/"
+															target="_blank" title="模板之家">模板之家</a>
+						- 由<a href="http://zmrenwu.com/" title="网页模板" target="_blank">追梦人物的博客</a>修改
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- 回到顶端的按钮 -->
+	<button type="button" id="BackTop" class="toTop-arrow" style="z-index: 100;"></button>
+
+	  <script src="js/script.js"></script>
+	  <script src="{% static 'blog/js/script.js' %}"></script>
+	  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+      <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+      <script>
+    	  hljs.initHighlightingOnLoad();
+    	  hljs.initLineNumbersOnLoad();
+      </script>
+	<!--  回到顶部的浮动按钮的js  -->
+		<script>
+    // 向上滚动的函数
+    $(function () {
+        $('#BackTop').click(function () {
+            $('html,body').animate({scrollTop: 0}, 500);
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $('#BackTop').fadeIn(300);
+            } else {
+                $('#BackTop').stop().fadeOut(300);
+            }
+        }).scroll();
+    });
+</script>
+
+
+
+
+
+
+	</body>
+</html>

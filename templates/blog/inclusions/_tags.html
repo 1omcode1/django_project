@@ -1,0 +1,61 @@
+
+
+
+
+
+
+     <ul class="list-group">
+
+        <li class="list-group-item" style="box-shadow: 1px 1px 1px #888888;">
+          <a href="/category_name" class="fas fa-tags"> 标签</a>
+        </li>
+      {% for tag in tag_list %}
+        <li class="list-group-item" style="box-shadow: 1px 1px 1px #888888;">
+          <a  href="{% url 'blog:tag' tag.pk %}" style="color:#527BFF;">
+              {{ tag.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </a>
+
+            <span class="badge" style="background-color:#FFC107;color:black;">
+              {{ tag.num_posts }}
+            </span>
+
+        </li>
+       {% empty %}
+        暂无标签！
+      {% endfor %}
+    </ul>
+
+
+<!--
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a href="/category_name" class="fas fa-tags"> 标签云 </a>
+            </h3>
+        </div>
+        <div class="panel-body">
+            这是一个基本的面板
+        </div>
+
+        {% for tag in tag_list %}
+        <table class="table">
+            <tr>
+                <td>
+                    {{ tag.name }}
+                </td>
+                <td>
+                    <span class="badge" style="background-color:#FFC107;color:black;">
+                        {{ tag.num_posts }}
+                    </span>
+                </td>
+            </tr>
+
+        </table>
+        {% empty %}
+                暂无标签！
+            {% endfor %}
+
+
+    </div>
+
+-->

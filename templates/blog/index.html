@@ -1,0 +1,164 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_extras %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+
+
+	</style>
+</head>
+<body>
+
+
+	<div class="content-body">
+		<div class="container" >
+			<div class="row">
+				<main class="col-md-8">
+				{% block main %}
+
+					{% for post in post_list %}
+					<!-- 框和框之间的距离-->
+					<div>
+						<p></p>
+					</div>
+
+					<div class="border_adjust">
+						<div>
+
+							<div>
+								<p></p>
+							</div>
+							<!-- 标题 -->
+							<div >
+							<h4 >
+								<b>
+									<a href="{{ post.get_absolute_url }}"
+									>
+										{{ post.title }}
+									</a>
+								</b>
+							</h4>
+							</div>
+
+							<div >
+								<!-- 目录栏 -->
+								 <a href="#"
+                                       role="button"
+                                       class="btn btn-sm hvr-pop btn-outline-secondary btn-danger">
+                                        {{ post.category.name }}
+								 </a>
+
+								<!--  标签栏  -->
+
+								{% for tag in post.tags.all %}
+								<a href="#"
+								   class="badge badge-pill badge-light hvr-float-shadow"
+								>
+									{{ tag }}
+								</a>
+								{% endfor %}
+							</div>
+
+							<!--  摘要功能  -->
+							<div class="entry-content clearfix">
+								<p>
+									{{ post.excerpt }}
+								</p>
+							</div>
+
+							<!--  附加信息  -->
+							<span style="color: green;">
+								<i class="fas fa-eye" style="color: lightskyblue;"></i>
+								{{ post.page_views }}浏览&nbsp;&nbsp;&nbsp;
+							</span>
+
+							<span style="color: blue;">
+								<i class="fas fa-comments" style="color: yellowgreen;"></i>
+								{{ post.comment_set.count }}&nbsp;&nbsp;&nbsp;
+							</span>
+
+							<span style="color: blue;">
+									<i class="fas fa-clock" style="color: pink;"></i>
+									{{ post.created_time|date:'Y-m-d' }}
+							</span>
+
+							<div>
+								<p></p>
+							</div>
+
+						</div>
+
+					</div>
+
+
+				<!--  没有文章时  -->
+					{% empty %}
+					<div class="no-post">暂时还没有发布的文章！</div>
+					{% endfor %}
+
+				<!-- 分页功能  -->
+					<div class="text-center pagination" style="width: 100%">
+  						<ul>
+    						{% if page.has_previous %}
+      							<li><a href="?index={{ page.previous_page_number }}"
+             							class="prev">&lsaquo;&lsaquo; </a></li>
+    						{% else %}
+      							<li><span class="disabled prev">&lsaquo;&lsaquo; </span></li>
+    						{% endif %}
+
+    						{% for page_number in paginator.page_range %}
+      							{% if page %}
+        							{% if page_number == page.number %}
+										<li class="current"><a href="?index={{page_number}}">{{ page_number }}</a></li>
+        							{% else %}
+          								<li><a href="?index={{page_number}}" class="page">{{ page_number }}</a></li>
+        							{% endif %}
+								{% else %}
+        							...
+      							{% endif %}
+    						{% endfor %}
+
+							{% if page_obj.has_next %}
+      							<li>
+									<a href="?index={{page.next_page_number}}" class="next"> &rsaquo;&rsaquo;</a>
+      							</li>
+    						{% else %}
+      							<li>
+									<span class="next">
+										&rsaquo;&rsaquo;
+									</span>
+								</li>
+    						{% endif %}
+  						</ul>
+					</div>
+				{% endblock main %}
+				</main>
+
+
+
+			</div>
+		</div>
+	</div>
+	<footer id="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p class="copyright">&copy 2017 - 采集自<a href="http://www.cssmoban.com/"
+															target="_blank" title="模板之家">模板之家</a>
+						- 由<a href="http://zmrenwu.com/" title="网页模板" target="_blank">追梦人物的博客</a>修改
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+
+	<script src="{% static 'blog/js/script.js' %}"></script>
+	</body>
+</html>
