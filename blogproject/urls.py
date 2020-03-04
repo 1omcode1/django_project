@@ -21,6 +21,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('', include('comments.urls')),
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
+    path('password-reset/', include('password_reset.urls')),
 ]
 '''
 这里导入了一个include函数，然后利用这个函数把blog应用下的urls.py文件包含了进来。此外

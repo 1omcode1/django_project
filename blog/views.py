@@ -40,6 +40,7 @@ def paginator_fiction(request, paginator):
 
 def index(request):
     post_list = Post.objects.all().order_by('-created_time')
+    # 每页显示4篇文章
     paginator = Paginator(post_list, 4)
     page_num = paginator_fiction(request, paginator)
 

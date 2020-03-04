@@ -1,6 +1,7 @@
 
 from django import template
 from ..forms import CommentForm
+from django.contrib.auth import authenticate
 
 register = template.Library()
 

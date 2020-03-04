@@ -10,6 +10,7 @@ django = "==2.2.3"
 markdown = "*"
 faker = "*"
 django-pure-pagination = "*"
+django-password-reset = "*"
 
 [requires]
-python_version = "3.6.4"
+python_version = "3.7"

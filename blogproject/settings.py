@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'oeptu#%j#6*udse(7#_u!-efoepo-u)wyf1#5*i3gco3lr-wcr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # 允许的服务器
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.dyyphoto.com']
@@ -43,11 +43,13 @@ INSTALLED_APPS = [
 
     'userprofile',  # 用户注册功能
     'mptt',  # 多级评论
+    'password_reset',  #重置密码
+
 ]
 
 # 分页功能的设置
 PAGINATION_SETTINGS = {
-    'PAGE_RANGE_DISPLAYED': 3,  # 中间显示的个数
+    'PAGE_RANGE_DISPLAYED': 2,  # 中间显示的个数
     'MARGIN_PAGES_DISPLAYED': 2,  # 两边显示的个数
 
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,  # 当请求不存在了，显示第一页
@@ -83,6 +85,7 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join(['codesnippet']),
     }
 }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -163,3 +166,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # 静态文件收集目录
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# SMTP服务器，改为你的邮箱的smtp!
+EMAIL_HOST = 'smtp.qq.com'
+# 改为你自己的邮箱名！
+EMAIL_HOST_USER = 'your_email_account@xxx.com'
+# 你的邮箱密码
+EMAIL_HOST_PASSWORD = 'your_password'
+# 发送邮件的端口
+EMAIL_PORT = 25
+# 是否使用 TLS
+EMAIL_USE_TLS = True
+# 默认的发件人
+DEFAULT_FROM_EMAIL = 'xxx的博客 <your_email_account@xxx.com>'

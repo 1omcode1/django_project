@@ -102,37 +102,44 @@
 
 				<!-- 分页功能  -->
 					<div class="text-center pagination" style="width: 100%">
-  						<ul>
+  						<ul class="pagination">
+							<!-- 如果不是第一页，则显示上翻按钮 -->
     						{% if page.has_previous %}
-      							<li><a href="?index={{ page.previous_page_number }}"
-             							class="prev">&lsaquo;&lsaquo; </a></li>
+      							<li>
+									<a href="?index={{ page.previous_page_number }}" class="prev">&laquo;</a>
+								</li>
     						{% else %}
-      							<li><span class="disabled prev">&lsaquo;&lsaquo; </span></li>
+      							<li>
+									<span class="disabled prev">&lsaquo;&lsaquo; </span>
+								</li>
     						{% endif %}
 
     						{% for page_number in paginator.page_range %}
       							{% if page %}
         							{% if page_number == page.number %}
-										<li class="current"><a href="?index={{page_number}}">{{ page_number }}</a></li>
+										<li class="active">
+											<a href="?index={{page_number}}">{{ page_number }}</a>
+										</li>
         							{% else %}
-          								<li><a href="?index={{page_number}}" class="page">{{ page_number }}</a></li>
+          								<li>
+											<a href="?index={{page_number}}" class="page">{{ page_number }}</a>
+										</li>
         							{% endif %}
 								{% else %}
         							...
       							{% endif %}
     						{% endfor %}
 
-							{% if page_obj.has_next %}
+							{% if page.has_next %}
       							<li>
-									<a href="?index={{page.next_page_number}}" class="next"> &rsaquo;&rsaquo;</a>
+									<a href="?index={{ page.next_page_number }}" class="prev">&raquo;</a>
       							</li>
     						{% else %}
       							<li>
-									<span class="next">
-										&rsaquo;&rsaquo;
-									</span>
+									<span class="disabled prev">&raquo;</span>
 								</li>
     						{% endif %}
+
   						</ul>
 					</div>
 				{% endblock main %}

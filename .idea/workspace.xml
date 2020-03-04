@@ -34,7 +34,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.project" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -216,17 +216,23 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="735" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578375434820" />
-    <state x="170" y="111" key="SettingsEditor" timestamp="1583031173027">
-      <screen x="0" y="0" width="1162" height="824" />
+    <state x="177" y="111" key="SettingsEditor" timestamp="1583200505612">
+      <screen x="0" y="0" width="1211" height="824" />
     </state>
     <state x="170" y="111" key="SettingsEditor/0.0.1162.824@0.0.1162.824" timestamp="1583031173027" />
+    <state x="177" y="111" key="SettingsEditor/0.0.1211.824@0.0.1211.824" timestamp="1583200505612" />
     <state x="483" y="111" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581642706726" />
-    <state x="246" y="250" key="com.intellij.ide.util.TipDialog" timestamp="1583117823874">
+    <state x="246" y="250" key="com.intellij.ide.util.TipDialog" timestamp="1583282143570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="182" y="250" key="com.intellij.ide.util.TipDialog/0.0.1080.824@0.0.1080.824" timestamp="1582942355737" />
     <state x="196" y="250" key="com.intellij.ide.util.TipDialog/0.0.1162.824@0.0.1162.824" timestamp="1583029926728" />
-    <state x="246" y="250" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583117823874" />
+    <state x="186" y="250" key="com.intellij.ide.util.TipDialog/0.0.1164.824@0.0.1164.824" timestamp="1583198216006" />
+    <state x="246" y="250" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583282143570" />
+    <state x="402" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583200051346">
+      <screen x="0" y="0" width="1211" height="824" />
+    </state>
+    <state x="402" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1211.824@0.0.1211.824" timestamp="1583200051346" />
     <state x="-6" y="58" width="948" height="650" maximized="true" key="dock-window-1" timestamp="1580088761142">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
